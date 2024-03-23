@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //criar as tabelas
-        Schema::create('Usuario', function (Blueprint $table){
-            $table->integerIncrements('iduser');
+        Schema::create('sub_categorias', function (Blueprint $table) {
+            $table->id();
             $table->string('nome');
-            $table->string('genero');
-            $table->date('data_nascimento');
-            $table->string('endereco');
-            $table->integer('telefone');
-            $table->string('email');
-            $table->string('funcao');
+            $table->string('imagem')->nullable();
+            $table->text('descricao')->nullable();
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,7 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('sub_categorias');
     }
 };

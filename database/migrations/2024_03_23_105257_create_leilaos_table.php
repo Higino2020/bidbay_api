@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('Produto', function (Blueprint $table){
-            $table->integerIncrements('id_produto');
-            $table->string('nome_produto');
-            $table->unsignedInteger('id_categorias');
-            $table->foreign('id_categorias')->references('id_categoria')->on('Categoria')->onDelete('cascade');
+        Schema::create('leilaos', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,7 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists();
+        Schema::dropIfExists('leilaos');
     }
 };

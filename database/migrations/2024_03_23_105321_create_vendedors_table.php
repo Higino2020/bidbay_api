@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('Imagem', function(Blueprint $table){
-            $table->integerIncrements('idImagem');
-            $table->string('nome_imagem');
-            $table->unsignedInteger('id_produtos');
-            $table->foreign('id_produtos')->references('id_produto')->on('Produto')->ondelete('cascade');
+        Schema::create('vendedors', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->enum('tipo',['Loja','Individual'])->nullable();
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,7 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists();
+        Schema::dropIfExists('vendedors');
     }
 };
