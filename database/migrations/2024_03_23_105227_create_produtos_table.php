@@ -27,6 +27,7 @@ return new class extends Migration
             $table->decimal('comprimento', 10, 2)->nullable();
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->foreignId('subcategoria_id')->constrained('sub_categorias')->onDelete('cascade');
+            $table->foreignId('vendedor_id')->constrained('vendedors')->onDelete('cascade');
             $table->timestamps();
         });
     }

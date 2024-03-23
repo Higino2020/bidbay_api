@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('leilaos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vendedor_id')->constrained('vendedors')->onDelete('cascade');
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade');
+            $table->integer('tempo')->default(1);
+            $table->enum('estado',['Em Analise','Activo','Cancelado','Interrompido','Finalizado']);
             $table->timestamps();
         });
     }
