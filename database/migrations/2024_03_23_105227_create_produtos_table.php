@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome',50);
             $table->text('descricao')->nullable();
-            $table->decimal('preco', 10, 2);
+            $table->decimal('preco',10,2);
             $table->integer('quantidade_estoque');
             $table->integer('compras');
-            $table->string('imagem')->nullable();
+            $table->string('origem',50)->nullable();
+            $table->string('imagem',200)->nullable();
             $table->enum('estado',['Novo','Recondicinado','Semi-Novo']);
-            $table->string('fornecedor')->nullable();
-            $table->decimal('peso', 10, 2)->nullable();
-            $table->decimal('largura', 10, 2)->nullable();
-            $table->decimal('altura', 10, 2)->nullable();
-            $table->decimal('comprimento', 10, 2)->nullable();
+            $table->decimal('peso',10,2)->nullable();
+            $table->decimal('largura',10,2)->nullable();
+            $table->decimal('altura',10,2)->nullable();
+            $table->decimal('comprimento',10,2)->nullable();
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->foreignId('subcategoria_id')->constrained('sub_categorias')->onDelete('cascade');
             $table->foreignId('vendedor_id')->constrained('vendedors')->onDelete('cascade');

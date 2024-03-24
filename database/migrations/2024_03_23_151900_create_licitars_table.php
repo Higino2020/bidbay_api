@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('licitars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('leliao_id')->constrained('leliaos')->onDelete('cascade');
+            $table->foreignId('leilao_id')->constrained('leilaos')->onDelete('cascade');
             $table->decimal('valor',10,2);
             $table->enum('estado',['Em Analise','Activo','Cancelado']);
             $table->timestamps();

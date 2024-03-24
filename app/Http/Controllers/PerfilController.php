@@ -12,7 +12,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $perfil = Perfil::with('user')->get();
+        return response()->json($perfil,200);
     }
 
     /**
@@ -34,32 +35,14 @@ class PerfilController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Perfil $perfil)
+    public function show($id)
     {
-        //
+        $perfil = Perfil::with('user')->find($id);
+        return response()->json($perfil,200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Perfil $perfil)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Perfil $perfil)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Perfil $perfil)
-    {
-        //
-    }
+   public function apagar($id){
+    $perfil = Perfil::find($id)->delete();
+    return response()->json($perfil,200);
+   }
 }

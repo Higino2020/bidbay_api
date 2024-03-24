@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('vendedors', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome',50);
             $table->enum('tipo',['Loja','Individual'])->nullable();
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
