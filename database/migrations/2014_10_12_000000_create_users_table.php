@@ -22,6 +22,13 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        App\Models\User::create([
+            'name'=>'Administrador',
+            'email'=>'Admin@gmail.com',
+            'password'=>bcrypt('123456789'),
+            'tipo' => 'Admin'
+        ]);
     }
 
     /**
