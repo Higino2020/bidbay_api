@@ -29,6 +29,18 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         //
+        $categ=null;
+        if (isset($request->id)) {
+            # code...
+            $categ=Categoria::find($request->id);
+        } else {
+            # code...
+            $categ=new Categoria();
+        }
+        $categ->nome=$request->nome;
+        $categ->imagem=$request->imagem;
+        $categ->descricao=$request->descricao;
+        $categ->save();
     }
 
     /**

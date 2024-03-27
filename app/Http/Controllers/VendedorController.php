@@ -29,6 +29,20 @@ class VendedorController extends Controller
     public function store(Request $request)
     {
         //
+        $vendedor=null;
+        if (isset($request->id)) {
+            # code...
+            $vendedor=Vendedor::fin($request->id);
+        } else {
+            # code...
+            $vendedor=new Vendedor();
+        }
+        $vendedor->nome=$request->nome;
+        $vendedor->tipo=$request->tipo;
+        $vendedor->categoria_id=$request->categoria_id;
+        $vendedor->user_id=$request->user_id;
+        $vendedor->save();
+        
     }
 
     /**

@@ -29,6 +29,19 @@ class SubCategoriaController extends Controller
     public function store(Request $request)
     {
         //
+        $subCategoria=null;
+        if (isset($request->id)) {
+            # code...
+            $subCategoria=SubCategoria::find($request->id);
+        } else {
+            # code...
+            $subCategoria= new SubCategoria();
+        }
+        $subCategoria->nome=$request->nome;
+        $subCategoria->imagem=$request->imagem;
+        $subCategoria->descricao=$request->descricao;
+        $subCategoria->categoria_id=$request->categoria_id;
+        $subCategoria->save();
     }
 
     /**
@@ -37,6 +50,8 @@ class SubCategoriaController extends Controller
     public function show(SubCategoria $subCategoria)
     {
         //
+       
+        
     }
 
     /**
