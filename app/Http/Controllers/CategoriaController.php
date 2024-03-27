@@ -13,6 +13,8 @@ class CategoriaController extends Controller
     public function index()
     {
         //
+        $categoria=Categoria::all();
+        return response()->json($categoria,200);
     }
 
     /**
@@ -29,34 +31,40 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         //
-        $categ=null;
+        $categoria=null;
         if (isset($request->id)) {
             # code...
-            $categ=Categoria::find($request->id);
+            $categoria=Categoria::find($request->id);
         } else {
             # code...
-            $categ=new Categoria();
+            $categoria=new Categoria();
         }
-        $categ->nome=$request->nome;
-        $categ->imagem=$request->imagem;
-        $categ->descricao=$request->descricao;
-        $categ->save();
+        $categoria->nome=$request->nome;
+        $categoria->imagem=$request->imagem;
+        $categoria->descricao=$request->descricao;
+        $categoria->save();
+        return response()->json($categoria,200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
+    public function show( $id)
     {
         //
+        $categoria=Categoria::find($id);
+        return response->json($categoria,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categoria $categoria)
+    public function apagar( $id)
     {
         //
+        $categoria=Categoria::find($id);
+        $categoria->delete();
+        return response()->json(['result'=>true],200);
     }
 
     /**

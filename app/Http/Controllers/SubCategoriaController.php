@@ -13,6 +13,8 @@ class SubCategoriaController extends Controller
     public function index()
     {
         //
+        $subCategoria= SubCategoria::all();
+        return response()->json($subCategoria,200);
     }
 
     /**
@@ -42,24 +44,29 @@ class SubCategoriaController extends Controller
         $subCategoria->descricao=$request->descricao;
         $subCategoria->categoria_id=$request->categoria_id;
         $subCategoria->save();
+        return response()->json($subCategoria,200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(SubCategoria $subCategoria)
+    public function show($id)
     {
         //
-       
+       $subCategoria= SubCategoria::find($id);
+       return response()->json($subCategoria,200);
         
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubCategoria $subCategoria)
+    public function apagar($id)
     {
         //
+        $subCategoria=SubCategoria::find($id);
+        $subCategoria->delete();
+        return response()->json(['result'=>true],200);
     }
 
     /**
