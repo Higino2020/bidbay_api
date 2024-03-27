@@ -12,7 +12,6 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
         $categoria=Categoria::all();
         return response()->json($categoria,200);
     }
@@ -33,14 +32,18 @@ class CategoriaController extends Controller
         //
         $categoria=null;
         if (isset($request->id)) {
-            # code...
             $categoria=Categoria::find($request->id);
         } else {
-            # code...
             $categoria=new Categoria();
         }
+        if (request()->hasFile('imagem')) {
+            $media = MediaUploader::fromSource(request()->file('imagem'))
+                ->toDirectory('imagem')->onDuplicateIncrement()
+                ->useHashForFilename()
+                ->setAllowedAggregateTypes(['image/*'])->upload();
+            $categoria->imagem = $media->basename;
+        }
         $categoria->nome=$request->nome;
-        $categoria->imagem=$request->imagem;
         $categoria->descricao=$request->descricao;
         $categoria->save();
         return response()->json($categoria,200);
@@ -51,7 +54,6 @@ class CategoriaController extends Controller
      */
     public function show( $id)
     {
-        //
         $categoria=Categoria::find($id);
         return response->json($categoria,200);
     }
@@ -61,7 +63,6 @@ class CategoriaController extends Controller
      */
     public function apagar( $id)
     {
-        //
         $categoria=Categoria::find($id);
         $categoria->delete();
         return response()->json(['result'=>true],200);

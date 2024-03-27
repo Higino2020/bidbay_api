@@ -1,6 +1,18 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{
+    UserController,
+    ProdutoController,
+    CategoriaController,
+    SubCategoriaController,
+    VendedorController,
+    LeilaoController,
+    ImagemController,
+    PerfilController,
+    CarrinhoController,
+    LicitarController,
+    CompraController,
+};
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +36,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('user/auth',[UserController::class,'autenticar']);
 Route::post('user',[UserController::class,'cadastro']);
+
+Route::post('produto',[ProdutoController::class,'store']);
+Route::get('produto',[ProdutoController::class,'index']);
+Route::get('produto/{id}',[ProdutoController::class,'show']);
+Route::get('produto/{id}/apagar',[ProdutoController::class,'apagar']);
+
+Route::post('categoria',[CategoriaController::class,'store']);
+Route::get('categoria',[CategoriaController::class,'index']);
+Route::get('categoria/{id}',[CategoriaController::class,'show']);
+Route::get('categoria/{id}/apagar',[CategoriaController::class,'apagar']);
+
+Route::post('subCategoria',[SubCategoriaController::class,'store']);
+Route::get('subCategoria',[SubCategoriaController::class,'index']);
+Route::get('subCategoria/{id}',[SubCategoriaController::class,'show']);
+Route::get('subCategoria/{id}/apagar',[SubCategoriaController::class,'apagar']);
+
+Route::post('vendedor',[VendedorController::class,'store']);
+Route::get('vendedor',[VendedorController::class,'index']);
+Route::get('vendedor/{id}',[VendedorController::class,'show']);
+Route::get('vendedor/{id}/apagar',[VendedorController::class,'apagar']);
 
 
 Route::get('getfile/{nome}',function($name){

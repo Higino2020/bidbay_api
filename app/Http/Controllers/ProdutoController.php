@@ -41,7 +41,7 @@ class ProdutoController extends Controller
                 ->toDirectory('imagem')->onDuplicateIncrement()
                 ->useHashForFilename()
                 ->setAllowedAggregateTypes(['image/*'])->upload();
-            $prod->prod = $media->basename;
+            $prod->imagem = $media->basename;
         }
         $prod->nome = $request->nome;
         $prod->descricao = $request->descricao;

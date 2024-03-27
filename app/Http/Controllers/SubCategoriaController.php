@@ -30,17 +30,20 @@ class SubCategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $subCategoria=null;
         if (isset($request->id)) {
-            # code...
             $subCategoria=SubCategoria::find($request->id);
         } else {
-            # code...
             $subCategoria= new SubCategoria();
         }
+        if (request()->hasFile('imagem')) {
+            $media = MediaUploader::fromSource(request()->file('imagem'))
+                ->toDirectory('imagem')->onDuplicateIncrement()
+                ->useHashForFilename()
+                ->setAllowedAggregateTypes(['image/*'])->upload();
+            $subCategoria->imagem = $media->basename;
+        }
         $subCategoria->nome=$request->nome;
-        $subCategoria->imagem=$request->imagem;
         $subCategoria->descricao=$request->descricao;
         $subCategoria->categoria_id=$request->categoria_id;
         $subCategoria->save();
@@ -52,10 +55,8 @@ class SubCategoriaController extends Controller
      */
     public function show($id)
     {
-        //
        $subCategoria= SubCategoria::find($id);
        return response()->json($subCategoria,200);
-        
     }
 
     /**
@@ -63,7 +64,6 @@ class SubCategoriaController extends Controller
      */
     public function apagar($id)
     {
-        //
         $subCategoria=SubCategoria::find($id);
         $subCategoria->delete();
         return response()->json(['result'=>true],200);
