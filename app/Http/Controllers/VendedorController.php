@@ -12,7 +12,8 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        //
+        $vendedor = Vendedor::all();
+        return response()->json($vendedor, 200);
     }
 
     /**
@@ -28,13 +29,10 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $vendedor=null;
         if (isset($request->id)) {
-            # code...
-            $vendedor=Vendedor::fin($request->id);
+            $vendedor=Vendedor::find($request->id);
         } else {
-            # code...
             $vendedor=new Vendedor();
         }
         $vendedor->nome=$request->nome;
@@ -42,15 +40,22 @@ class VendedorController extends Controller
         $vendedor->categoria_id=$request->categoria_id;
         $vendedor->user_id=$request->user_id;
         $vendedor->save();
-        
+        return response()->json($vendedor,200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Vendedor $vendedor)
+    public function show($id)
     {
-        //
+        $vendedor = Vendedor::find($id);
+        return response()->json($vendedor, 200);
+    }
+
+    public function apagar($id){
+        $vendedor = Vendedor::find($id);
+        $vendedor->delete();
+        return response()->json(['result'=>true], 200);
     }
 
     /**
