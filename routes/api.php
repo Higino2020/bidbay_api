@@ -51,11 +51,31 @@ Route::post('subCategoria',[SubCategoriaController::class,'store']);
 Route::get('subCategoria',[SubCategoriaController::class,'index']);
 Route::get('subCategoria/{id}',[SubCategoriaController::class,'show']);
 Route::get('subCategoria/{id}/apagar',[SubCategoriaController::class,'apagar']);
-
-Route::post('vendedor',[VendedorController::class,'store']);
-Route::get('vendedor',[VendedorController::class,'index']);
-Route::get('vendedor/{id}',[VendedorController::class,'show']);
-Route::get('vendedor/{id}/apagar',[VendedorController::class,'apagar']);
+#ROTA DO PERFIL
+Route::post('perfil',[PerfilController::class,'store']);
+Route::get('perfil',[PerfilController::class,'index']);
+Route::get('perfil/{id}',[PerfilController::class,'show']);
+Route::get('perfil/{id}/apagar',[PerfilController::class,'apagar']);
+#ROTA DO CARRINHO
+Route::post('carrinho',[CarrinhoController::class,'store']);
+Route::get('carrinho',[CarrinhoController::class,'index']);
+Route::get('carrinho/{id}',[CarrinhoController::class,'show']);
+Route::get('carrinho/{id}/apagar',[CarrinhoController::class,'apagar']);
+#ROTA DA COMPRA
+Route::post('compra',[CompraController::class,'store']);
+Route::get('compra',[CompraController::class,'index']);
+Route::get('compra/{id}',[CompraController::class,'show']);
+Route::get('compra/{id}/apagar',[CompraController::class,'apagar']);
+#ROTA DO LEILAO
+Route::post('leilao',[LeilaoController::class,'store']);
+Route::get('leilao',[LeilaoController::class,'index']);
+Route::get('leilao/{id}',[LeilaoController::class,'show']);
+Route::get('leilao/{id}/apagar',[LeilaoController::class,'apagar']);
+#ROTA DO LICITAR
+Route::post('licitar',[LicitarController::class,'store']);
+Route::get('licitar',[LicitarController::class,'index']);
+Route::get('licitar/{id}',[LicitarController::class,'show']);
+Route::get('licitar/{id}/apagar',[LicitarController::class,'apagar']);
 
 
 Route::get('getfile/{nome}',function($name){

@@ -13,6 +13,8 @@ class LeilaoController extends Controller
     public function index()
     {
         //
+        $leilao=Leilao::all();
+        return response()->json($leilao,200);
     }
 
     /**
@@ -29,22 +31,39 @@ class LeilaoController extends Controller
     public function store(Request $request)
     {
         //
+        $leilao=null;
+        if (isset($request->id)) {
+            $leilao= Leilao::find($request->id);
+        } else {
+        $leilao=new Leilao();
+        }
+        $leilao->vendedor_id=$request->vendedor_id;
+        $leilao->produto_id=$request->produto_id;
+        $leilao->tempo=$request->tempo;
+        $leilao->estado=$request->estado;
+        $leilao->save();
+        return response()->json($leilao,200);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Leilao $leilao)
+    public function show($id)
     {
-        //
+        $leilao= Leilao::find($id);
+        return response()->json($leilao,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Leilao $leilao)
+    public function apagar( $id)
     {
         //
+        $leilao= Leilao::find($id);
+        $leilao->delete();
+        return response()->json(['result'=>true],200);
     }
 
     /**

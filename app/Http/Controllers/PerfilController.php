@@ -30,6 +30,23 @@ class PerfilController extends Controller
     public function store(Request $request)
     {
         //
+        $perfil=null;
+        if (isset($request->id)) {
+            $perfil=Perfil::find($request->id);
+        } else {
+            $perfil=new Perfil();
+        }
+        $perfil->nome_completo=$request->nome_completo;
+        $perfil->nacionalidade=$request->nacionalidade;
+        $perfil->provincia=$request->provincia;
+        $perfil->moeda=$request->moeda;
+        $perfil->municipio=$request->municipio;
+        $perfil->bairro=$request->bairro;
+        $perfil->zona=$request->zona;
+        $perfil->user_id=$request->user_id;
+        $perfil->save();
+        return response()->json($perfil,200);
+        
     }
 
     /**
@@ -43,6 +60,6 @@ class PerfilController extends Controller
 
    public function apagar($id){
     $perfil = Perfil::find($id)->delete();
-    return response()->json($perfil,200);
+    return response()->json(['result'=>true],200);
    }
 }

@@ -13,6 +13,8 @@ class CompraController extends Controller
     public function index()
     {
         //
+        $compra= Compra::all();
+        return response()->json($compra,200);
     }
 
     /**
@@ -29,22 +31,41 @@ class CompraController extends Controller
     public function store(Request $request)
     {
         //
+        $compra=null;
+        if (isset($request->id)) {
+            $compra= Compra::fid($request->id);
+        } else {
+            $compra= new Compra();
+        }
+        $compra->user_id= $request->user_id;
+        $compra->produto_id=$request->produto_id;
+        $compra->quantidade=$request->quantidade;
+        $compra->color=$request->color;
+        $compra->tamanho=$request->tamanho;
+        $compra->total=$request->total;
+        $compra->save();
+        return response()->json($compra,200);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Compra $compra)
+    public function show( $id)
     {
         //
+        $compra= Compra::find($id);
+        return response()->json($compra,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Compra $compra)
+    public function apagar( $id)
     {
-        //
+        $compra= Compra::find($id);
+        $compra->delete();
+        return response()->json(['result'=>true],200);
     }
 
     /**

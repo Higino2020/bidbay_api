@@ -13,6 +13,8 @@ class CarrinhoController extends Controller
     public function index()
     {
         //
+        $carrinho= Carrinho::all();
+        return response()->json($carrinho,200);
     }
 
     /**
@@ -29,22 +31,40 @@ class CarrinhoController extends Controller
     public function store(Request $request)
     {
         //
+        $carrinho=null;
+        if (isset($request->id)) {
+            $carrinho= Carrinho::find($request->id);
+        } else {
+            $carrinho= new Carrinho();
+        }
+        $carrinho->user_id=$request->user_id;
+        $carrinho->produto_id=$request->produto_id;
+        $carrinho->quantidade=$request->quantidade;
+        $carrinho->color=$request->color;
+        $carrinho->tamanho=$request->tamanho;
+        $carrinho->save();
+        return response()->json($carrinho,200);        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Carrinho $carrinho)
+    public function show($id)
     {
         //
+        $carrinho= Carrinho::find($id);
+        return response()->json($carrinho,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Carrinho $carrinho)
+    public function apagar( $id)
     {
         //
+        $carrinho= Carrinho::find($id);
+        $carrinho->delete();
+        return response()->json(['result'=>true],200);
     }
 
     /**
