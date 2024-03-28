@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Imagem;
 use Illuminate\Http\Request;
+use Plank\Mediable\Facades\MediaUploader;
 
 class ImagemController extends Controller
 {

@@ -33,7 +33,7 @@ class LicitarController extends Controller
         //
         $licitar=null;
         if (isset($request->id)) {
-           $licitar= Licitar($request->id);
+           $licitar= Licitar::find($request->id);
         } else {
             $licitar= new Licitar();
         }

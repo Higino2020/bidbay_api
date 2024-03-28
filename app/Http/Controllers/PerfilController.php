@@ -59,7 +59,7 @@ class PerfilController extends Controller
     }
 
    public function apagar($id){
-    $perfil = Perfil::find($id)->delete();
+    Perfil::find($id)->delete();
     return response()->json(['result'=>true],200);
    }
 }

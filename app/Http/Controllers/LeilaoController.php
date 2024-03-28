@@ -30,12 +30,11 @@ class LeilaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $leilao=null;
         if (isset($request->id)) {
             $leilao= Leilao::find($request->id);
         } else {
-        $leilao=new Leilao();
+            $leilao=new Leilao();
         }
         $leilao->vendedor_id=$request->vendedor_id;
         $leilao->produto_id=$request->produto_id;
@@ -43,7 +42,6 @@ class LeilaoController extends Controller
         $leilao->estado=$request->estado;
         $leilao->save();
         return response()->json($leilao,200);
-        
     }
 
     /**

@@ -30,7 +30,6 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $compra=null;
         if (isset($request->id)) {
             $compra= Compra::fid($request->id);
@@ -45,7 +44,6 @@ class CompraController extends Controller
         $compra->total=$request->total;
         $compra->save();
         return response()->json($compra,200);
-        
     }
 
     /**

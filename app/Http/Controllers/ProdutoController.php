@@ -8,26 +8,13 @@ use Plank\Mediable\Facades\MediaUploader;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         $produto = Produto::with(['vendedor','categoria','subcategoria'])->get();
         return response()->json($produto,200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $prod = null;
@@ -62,35 +49,15 @@ class ProdutoController extends Controller
         return response()->json($prod,200);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Produto $produto)
+    
+    public function show($id)
     {
-        //
+        $prod = Produto::with(['vendedor','categoria','subcategoria'])->find($id);
+        return response()->json($prod,200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produto $produto)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Produto $produto)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Produto $produto)
-    {
-        //
-    }
+   public function apagar($id){
+        Produto::find($id)->delete();
+        return response()->json(['result'=>true],200);
+   }
 }

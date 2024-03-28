@@ -44,4 +44,9 @@ class UserController extends Controller
         Auth::logout();
         return response()->json(200);
     }
+
+    public function userAll(){
+        $user = User::with('perfil')->get();
+        return response()->json($user,200);
+    }
 }

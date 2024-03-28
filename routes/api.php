@@ -13,6 +13,7 @@ use App\Http\Controllers\{
     LicitarController,
     CompraController,
 };
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,8 @@ use Plank\Mediable\Facades\MediaUploader;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    $user = User::with('perfil')->find($request->user()->id);
+    return response()->json($user, 200);
 });
 
 Route::post('user/auth',[UserController::class,'autenticar']);
@@ -77,6 +79,7 @@ Route::get('licitar',[LicitarController::class,'index']);
 Route::get('licitar/{id}',[LicitarController::class,'show']);
 Route::get('licitar/{id}/apagar',[LicitarController::class,'apagar']);
 
+Route::get('userAll',[UserController::class,'userAll']);
 
 Route::get('getfile/{nome}',function($name){
         $path = null;

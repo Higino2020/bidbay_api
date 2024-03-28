@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Plank\Mediable\Facades\MediaUploader;
 
 class CategoriaController extends Controller
 {
@@ -55,7 +56,7 @@ class CategoriaController extends Controller
     public function show( $id)
     {
         $categoria=Categoria::find($id);
-        return response->json($categoria,200);
+        return response()->json($categoria,200);
     }
 
     /**
