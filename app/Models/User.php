@@ -46,5 +46,8 @@ class User extends Authenticatable
     public function perfil(){
         return $this->hasOne(Perfil::class,'id');
     }
+    public function vendedor(){
+        return $this->belongsTo(Vendedor::class);
+    }
 }
 

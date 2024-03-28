@@ -13,7 +13,7 @@ class LicitarController extends Controller
     public function index()
     {
         //
-        $licitar= Licitar::all();
+        $licitar= Licitar::with(['produto'])->get();
         return response()->json($licitar,200);
     }
 

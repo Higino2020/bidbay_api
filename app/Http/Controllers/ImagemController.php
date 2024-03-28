@@ -13,7 +13,7 @@ class ImagemController extends Controller
      */
     public function index()
     {
-        $img = Imagem::all();
+        $img = Imagem::with(['produto'])->get();
         return response()->json($img, 200);
     }
 

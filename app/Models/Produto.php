@@ -17,4 +17,16 @@ class Produto extends Model
     public function vendedor(){
         return $this->belongsTo(Vendedor::class);
     }
+    public function imagem(){
+        return $this->belongsTo(Imagem::class);
+    }
+    public function leilao(){
+        return $this->belongsTo(Leilao::class);
+    }
+    public function licitar(){
+        return $this->belongsTo(Licitar::class);
+    }
+    public function compra(){
+        return $this->belongsTo(Compra::class);
+    }
 }

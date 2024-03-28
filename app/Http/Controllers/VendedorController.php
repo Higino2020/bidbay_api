@@ -12,7 +12,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $vendedor = Vendedor::all();
+        $vendedor = Vendedor::with(['user'])->get();
         return response()->json($vendedor, 200);
     }
 

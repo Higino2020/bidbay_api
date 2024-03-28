@@ -13,7 +13,7 @@ class CompraController extends Controller
     public function index()
     {
         //
-        $compra= Compra::all();
+        $compra= Compra::with(['produto'])->get();
         return response()->json($compra,200);
     }
 

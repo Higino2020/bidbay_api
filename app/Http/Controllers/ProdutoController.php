@@ -11,7 +11,8 @@ class ProdutoController extends Controller
    
     public function index()
     {
-        $produto = Produto::with(['vendedor','categoria','subcategoria'])->get();
+        $produto = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
+        'compra'])->get();
         return response()->json($produto,200);
     }
 

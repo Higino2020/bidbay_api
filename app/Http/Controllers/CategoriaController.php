@@ -13,7 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categoria=Categoria::all();
+        $categoria=Categoria::with(['subcategoria'])->get();
         return response()->json($categoria,200);
     }
 

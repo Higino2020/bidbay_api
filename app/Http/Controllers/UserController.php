@@ -46,7 +46,7 @@ class UserController extends Controller
     }
 
     public function userAll(){
-        $user = User::with('perfil')->get();
+        $user = User::with(['perfil','vendedor'])->get();
         return response()->json($user,200);
     }
 }
