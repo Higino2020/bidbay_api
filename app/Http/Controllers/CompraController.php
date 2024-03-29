@@ -14,7 +14,7 @@ class CompraController extends Controller
     public function index()
     {
         //
-        $compra= Compra::with(['produto'])->get();
+        $compra= Compra::with(['produto','user'])->get();
         return response()->json($compra,200);
     }
 
@@ -58,7 +58,7 @@ class CompraController extends Controller
     public function show( $id)
     {
         //
-        $compra= Compra::with(['produto'])->find($id);
+        $compra= Compra::with(['produto','user'])->find($id);
         return response()->json($compra,200);
     }
 
