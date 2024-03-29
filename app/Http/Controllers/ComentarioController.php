@@ -31,6 +31,21 @@ class ComentarioController extends Controller
     public function store(Request $request)
     {
         //
+        $comentario=null;
+        if (isset($request->id)) {
+            # code...
+            $comentario=Comentario::find($id);
+        } else {
+            # code...
+            $comentario= new Comentario();
+        }
+        $comentario->comentario=$request->comentario;
+        $comentario->img=$request->img;
+        $comentario->produto_id=$request->produto_id;
+        $comentario->user_id=$request->user_id;
+        $comentario->save();
+        return response()->json($comentario, 200);
+
     }
 
     /**
@@ -46,9 +61,11 @@ class ComentarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comentario $comentario)
+    public function apagar( $id)
     {
         //
+        Comentario::find($id)->delete();
+        return response()->json(['result'=>true], 200);
     }
 
     /**

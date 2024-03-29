@@ -13,6 +13,8 @@ class SeguirController extends Controller
     public function index()
     {
         //
+        $seguir=Seguir::with('user')->get();
+        return response()->json($seguir, 200);
     }
 
     /**
@@ -29,16 +31,37 @@ class SeguirController extends Controller
     public function store(Request $request)
     {
         //
+        $seguir=null;
+        if (isset($request->id)) {
+            # code...
+            $seguir=Seguir::find($request->id);
+        } else {
+            # code...
+            $seguir= new Seguir();
+        }
+        $seguir->seguido=$request->seguido;
+        $seguir->seguidor=$request->seguidor;
+        $seguir->save();
+        return response()->json($seguir, 200);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Seguir $seguir)
+    public function show( $id)
     {
         //
+        $seguir=Seguir::with('user')->find($id);
+        return response()->json($seguir, 200);
     }
 
+    public function apagar( $id)
+    {
+        //
+        Seguir::find($id)->delete();
+        return response()->json(['result'=>true], 200);
+    }
     /**
      * Show the form for editing the specified resource.
      */

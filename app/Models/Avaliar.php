@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Avaliar extends Model
 {
     use HasFactory;
+    public function user(){
+        return $this->hasMany(User::class);
+    }
+    public function produto(){
+        return $this->hasMany(Produto::class);
+    }
 }
