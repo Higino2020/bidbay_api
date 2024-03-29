@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compra;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -43,6 +44,11 @@ class CompraController extends Controller
         $compra->tamanho=$request->tamanho;
         $compra->total=$request->total;
         $compra->save();
+
+        $prod = Produto::find($compra->produto_id);
+        $prod->compras += 1;
+        $prod->quantidade_estoque -=1;
+        $prod->save();
         return response()->json($compra,200);
     }
 
