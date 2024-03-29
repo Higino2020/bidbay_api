@@ -13,6 +13,8 @@ class ComentarioController extends Controller
     public function index()
     {
         //
+        $comentario=Comentario::with(['user','produto'])->get();
+        return response()->json($comentario, 200);
     }
 
     /**
@@ -34,9 +36,11 @@ class ComentarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Comentario $comentario)
+    public function show( $id)
     {
         //
+        $comentario=Comentario::with(['user','produto'])->find($id);
+        return response()->json($comentario, 200);
     }
 
     /**

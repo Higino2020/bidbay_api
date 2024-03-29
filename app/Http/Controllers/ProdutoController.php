@@ -12,7 +12,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produto = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
-        'compra'])->get();
+        'compra','comentario','gosto'])->get();
         return response()->json($produto,200);
     }
 
@@ -54,7 +54,7 @@ class ProdutoController extends Controller
     public function show($id)
     {
         $prod = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
-        'compra'])->find($id);
+        'compra','comentario','gosto'])->find($id);
         return response()->json($prod,200);
     }
 

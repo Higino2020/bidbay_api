@@ -29,4 +29,10 @@ class Produto extends Model
     public function compra(){
         return $this->hasMany(Compra::class);
     }
+    public function gosto(){
+        return $this->belongsTo(Gosto::class);
+    }
+    public function comentario(){
+        return $this->belongsTo(Comentario::class);
+    }
 }

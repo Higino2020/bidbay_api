@@ -13,6 +13,8 @@ class GostoController extends Controller
     public function index()
     {
         //
+        $gosto=Gosto::with(['produto'])->get();
+        return response()->json($gosto,200);
     }
 
     /**
@@ -34,9 +36,11 @@ class GostoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Gosto $gosto)
+    public function show($id)
     {
         //
+        $gosto=Gosto::with(['produto'])->find($id);
+        return response()->json($gosto,200);
     }
 
     /**
