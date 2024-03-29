@@ -55,7 +55,7 @@ class CategoriaController extends Controller
      */
     public function show( $id)
     {
-        $categoria=Categoria::find($id);
+        $categoria=Categoria::with(['subcategoria'])->find($id);
         return response()->json($categoria,200);
     }
 

@@ -48,7 +48,7 @@ class VendedorController extends Controller
      */
     public function show($id)
     {
-        $vendedor = Vendedor::find($id);
+        $vendedor = Vendedor::with(['user'])->find($id);
         return response()->json($vendedor, 200);
     }
 

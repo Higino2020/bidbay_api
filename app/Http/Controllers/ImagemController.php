@@ -48,7 +48,7 @@ class ImagemController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['img'=>Imagem::find($id)], 200);
+        return response()->json(['img'=>Imagem::with(['produto'])->find($id)], 200);
     }
 
    public function apagar($id){

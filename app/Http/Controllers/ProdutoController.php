@@ -53,7 +53,8 @@ class ProdutoController extends Controller
     
     public function show($id)
     {
-        $prod = Produto::with(['vendedor','categoria','subcategoria'])->find($id);
+        $prod = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
+        'compra'])->find($id);
         return response()->json($prod,200);
     }
 

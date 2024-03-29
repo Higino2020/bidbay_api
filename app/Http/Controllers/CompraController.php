@@ -52,7 +52,7 @@ class CompraController extends Controller
     public function show( $id)
     {
         //
-        $compra= Compra::find($id);
+        $compra= Compra::with(['produto'])->find($id);
         return response()->json($compra,200);
     }
 

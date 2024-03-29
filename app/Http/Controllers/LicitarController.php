@@ -51,7 +51,7 @@ class LicitarController extends Controller
     public function show($id)
     {
         //
-        $licitar= Licitar::find($id);
+        $licitar= Licitar::with(['produto'])->find($id);
         return response()->json($licitar,200);
     }
 
