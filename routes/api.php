@@ -36,7 +36,7 @@ use Plank\Mediable\Facades\MediaUploader;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    $user = User::with('perfil')->find($request->user()->id);
+    $user = User::with(['perfil','vendedor'])->find($request->user()->id);
     return response()->json($user, 200);
 });
 

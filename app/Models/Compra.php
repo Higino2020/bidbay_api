@@ -11,4 +11,8 @@ class Compra extends Model
     public function produto(){
         return $this->belongsTo(Produto::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
