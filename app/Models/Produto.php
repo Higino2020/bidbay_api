@@ -18,15 +18,15 @@ class Produto extends Model
         return $this->belongsTo(Vendedor::class);
     }
     public function imagem(){
-        return $this->belongsTo(Imagem::class);
+        return $this->hasMany(Imagem::class);
     }
     public function leilao(){
-        return $this->belongsTo(Leilao::class);
+        return $this->hasMany(Leilao::class);
     }
     public function licitar(){
-        return $this->belongsTo(Licitar::class);
+        return $this->hasMany(Licitar::class);
     }
     public function compra(){
-        return $this->belongsTo(Compra::class);
+        return $this->hasMany(Compra::class);
     }
 }
