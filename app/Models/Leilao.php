@@ -11,4 +11,7 @@ class Leilao extends Model
     public function produto(){
         return $this->belongsTo(Produto::class);
     }
+    public function vendedor(){
+        return $this->belongsTo(Vendedor::class);
+    }
 }

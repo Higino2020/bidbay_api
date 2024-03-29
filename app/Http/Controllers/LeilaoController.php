@@ -13,7 +13,7 @@ class LeilaoController extends Controller
     public function index()
     {
         //
-        $leilao=Leilao::with(['produto'])->get();
+        $leilao=Leilao::with(['produto','vendedor'])->get();
         return response()->json($leilao,200);
     }
 
@@ -49,7 +49,7 @@ class LeilaoController extends Controller
      */
     public function show($id)
     {
-        $leilao= Leilao::with(['produto'])->find($id);
+        $leilao= Leilao::with(['produto','vendedor'])->find($id);
         return response()->json($leilao,200);
     }
 

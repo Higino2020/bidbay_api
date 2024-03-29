@@ -11,7 +11,7 @@ class Vendedor extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function vendedor(){
+    public function produto(){
         return $this->hasMany(Produto::class);
     }
 }
