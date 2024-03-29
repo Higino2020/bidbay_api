@@ -12,6 +12,10 @@ use App\Http\Controllers\{
     CarrinhoController,
     LicitarController,
     CompraController,
+    SeguirController,
+    GostoController,
+    ComentarioController,
+    AvaliarController
 };
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -78,6 +82,26 @@ Route::post('licitar',[LicitarController::class,'store']);
 Route::get('licitar',[LicitarController::class,'index']);
 Route::get('licitar/{id}',[LicitarController::class,'show']);
 Route::get('licitar/{id}/apagar',[LicitarController::class,'apagar']);
+#ROTA DE SEGUIR
+Route::post('seguir',[SeguirController::class,'store']);
+Route::get('seguir',[SeguirController::class,'index']);
+Route::get('seguir/{id}',[SeguirController::class,'show']);
+Route::get('seguir/{id}/apagar',[SeguirController::class,'apagar']);
+#ROTA DE COMENTARIO
+Route::post('comentario',[ComentarioController::class,'store']);
+Route::get('comentario',[ComentarioController::class,'index']);
+Route::get('comentario/{id}',[ComentarioController::class,'show']);
+Route::get('comentario/{id}/apagar',[ComentarioController::class,'apagar']);
+#ROTA DO LICITAR
+Route::post('gosto',[GostoController::class,'store']);
+Route::get('gosto',[GostoController::class,'index']);
+Route::get('gosto/{id}',[GostoController::class,'show']);
+Route::get('gosto/{id}/apagar',[GostoController::class,'apagar']);
+#ROTA DO LICITAR
+Route::post('avaliar',[AvaliarController::class,'store']);
+Route::get('avaliar',[AvaliarController::class,'index']);
+Route::get('avaliar/{id}',[AvaliarController::class,'show']);
+Route::get('avaliar/{id}/apagar',[AvaliarController::class,'apagar']);
 
 Route::get('userAll',[UserController::class,'userAll']);
 

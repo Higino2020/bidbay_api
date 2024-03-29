@@ -8,7 +8,7 @@ use Plank\Mediable\Facades\MediaUploader;
 
 class ProdutoController extends Controller
 {
-   
+
     public function index()
     {
         $produto = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
@@ -50,11 +50,11 @@ class ProdutoController extends Controller
         return response()->json($prod,200);
     }
 
-    
+
     public function show($id)
     {
         $prod = Produto::with(['vendedor','categoria','subcategoria','imagem','leilao','licitar',
-        'compra','comentario','gosto'])->find($id);
+        'compra','comentario','gosto','avaliar'])->find($id);
         return response()->json($prod,200);
     }
 

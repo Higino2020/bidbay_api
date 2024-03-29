@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function autenticar(Request $request){
         $user = User::where('email', $request->email)->first();
-    
+
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['As Credencias inseridas estão erradas'],
@@ -46,7 +46,7 @@ class UserController extends Controller
     }
 
     public function userAll(){
-        $user = User::with(['perfil','vendedor','gosto'])->get();
+        $user = User::with(['perfil','vendedor','seguir'])->get();
         return response()->json($user,200);
     }
 }
