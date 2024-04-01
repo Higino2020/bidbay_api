@@ -23,9 +23,6 @@ class Produto extends Model
     public function leilao(){
         return $this->hasMany(Leilao::class);
     }
-    public function licitar(){
-        return $this->hasMany(Licitar::class);
-    }
     public function compra(){
         return $this->hasMany(Compra::class);
     }
